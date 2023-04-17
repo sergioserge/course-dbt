@@ -1,8 +1,10 @@
+-- config not neccessary
 {{
     config(
-        MATERIALIZED = 'table'
+        MATERIALIZED = 'view'
     )
 }}
+
 
 with source as (
     SELECT * FROM {{ source('postgres', 'addresses')}}
