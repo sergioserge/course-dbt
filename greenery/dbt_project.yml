@@ -36,3 +36,19 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+
+    # Defaults for all data models
+    transient: false
+    materialized: table
+
+    staging:
+      enabled: true
+      schema: staging
+      materialized: table
+
+  marts:
+    enabled: true
+    core:
+      +schema: reporting
+    marketing:
+      +schema: marketing

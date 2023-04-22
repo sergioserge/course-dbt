@@ -3,15 +3,68 @@ version: 2
 models:
   - name: stg_postgres_users
     description: stg_users
+    columns:
+      - name: user_guid
+        tests: 
+          - not_null
+          - unique
+      - name: address_guid
+        tests:
+          - relationships:
+              to: stg_postgres_addresses
+              field: address_guid
+
   - name: stg_postgres_addresses
     description: addresses
+    columns:
+      - name: address_guid
+        tests: 
+          - not_null
+          - unique
+
   - name: stg_postgres_events
     description: events
+    columns:
+      - name: event_guid
+        tests: 
+          - not_null
+          - unique
+
   - name: stg_postgres_products
     description: products
+    columns:
+      - name: product_guid
+        tests: 
+          - not_null
+          - unique
+
   - name: stg_postgres_order_items
     description: order_items
+    columns:
+      - name: order_guid
+        tests: 
+          - not_null
+
   - name: stg_postgres_promos
     description: promos
+    columns:
+      - name: promo_id
+        tests: 
+          - not_null
+          - unique
+
   - name: stg_postgres_orders
     description: orders
+    columns:
+      - name: order_guid
+        tests: 
+          - not_null
+          - unique
+          - relationships:
+              to: stg_postgres_order_items
+              field: order_guid
+      - name: promo_id
+        tests:
+          - relationships:
+              to: stg_postgres_promos
+              field: promo_id 

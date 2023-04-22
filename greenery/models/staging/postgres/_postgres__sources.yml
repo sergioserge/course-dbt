@@ -5,6 +5,7 @@ sources:
     schema: public # this is the schema our raw data lives in
     database: raw # this is the name of our database
 
+    # 
     quoting:
       database: false
       schema: false
