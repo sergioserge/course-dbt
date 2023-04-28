@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: fact_conversion_total
+  - name: fact_coversion_products
+  - name: fact_page_views
+  - name: fact_product_orders
+  - name: fact_users

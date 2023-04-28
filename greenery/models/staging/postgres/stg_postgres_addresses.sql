@@ -1,7 +1,7 @@
 -- config not neccessary
 {{
     config(
-        MATERIALIZED = 'view'
+        MATERIALIZED = 'table'
     )
 }}
 

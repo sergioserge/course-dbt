@@ -55,6 +55,9 @@ models:
 
   - name: stg_postgres_orders
     description: orders
+    tests: 
+    - dbt_utils.fewer_rows_than:
+        compare_model: ref('stg_postgres_order_items')
     columns:
       - name: order_guid
         tests: 
@@ -68,3 +71,4 @@ models:
           - relationships:
               to: stg_postgres_promos
               field: promo_id 
+      - name: stg_source_tables_overview
