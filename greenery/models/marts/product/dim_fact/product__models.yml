@@ -6,3 +6,5 @@ models:
   - name: fact_page_views
   - name: fact_product_orders
   - name: fact_users
+  - name: fact_product_funnel
+  - name: fact_product_funnel
