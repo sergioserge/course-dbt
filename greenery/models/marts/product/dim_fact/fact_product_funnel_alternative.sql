@@ -1,11 +1,22 @@
 
+{% set table_names = ['page_views_phase', 'add_to_cart_phase', 'page_views_total', 'add_to_cart_total']%}
+{% set event_types = ['page_view', 'add_to_cart', 'page_view', 'add_to_cart'] %}
+{% set values = ['conversion_rate_phase', 'conversion_rate_phase', 'conversion_rate_total', 'conversion_rate_total'] %}
+{% set column_names = ['page_view_conversion_phase', 'add_to_cart_conversion_phase', 'page_view_conversion_total', 'add_to_cart_conversion_total'] %}
 
-WITH page_views_phase AS(
+WITH 
+for
+{% for table_name in table_names %}
+AS(
     SELECT 
         product_guid,
-        CASE WHEN event_type = 'page_view' THEN conversion_rate_phase ELSE NULL END AS page_view_conversion_phase
+        CASE 
+            WHEN event_type = {% for event_type in event_types %} 
+            THEN {% for value in values %} 
+            ELSE NULL 
+        END AS {% for event_type in event_types %}
     FROM {{ref('int_product_funnel')}}
-    WHERE page_view_conversion_phase IS NOT NULL
+    WHERE {% for column_name in column_names %}  IS NOT NULL
 ),
 add_to_cart_phase AS(
     SELECT 
